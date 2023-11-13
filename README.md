@@ -67,162 +67,112 @@ plt.show()
 # 1) Which day of the week has the highest total bill amount ?
 ```python
 # 1) Which day of the week has the highest total bill amount ?
-plt.figure(figsize=(8, 6))
-sns.barplot(x='day', y='total_bill', data=df, estimator=sum, ci=None)
-plt.title('Total Bill Amount by Day of the Week')
-plt.show()
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='day', y='total_bill', data=df)
-plt.title('Total Bill Amount by Day of the Week (Boxplot)')
+sns.barplot(x=df['day'],y=df['total_bill'],hue=df['day'])
+plt.legend(loc="center")
+plt.title("Highest Total Bill Amount by day of the week")
 plt.show()
 ```
-# Ouput :
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/ddd0186a-20bd-4397-ad98-8bbdc1f7a36e)
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/710c34e5-7def-4bbe-a848-9e911b124ee9)
+# OuTput :
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/26567cd2-0c89-4be0-bbd5-62ed46643fde)
+
 
 # 2) What is the average tip amount given by smokers and non_smokers?
 ```python
 # 2) What is the average tip amount given by smokers and non-smokers?
-plt.figure(figsize=(8, 6))
-sns.barplot(x='smoker', y='tip', data=df, estimator='mean', ci=None)
-plt.title('Average Tip Amount for Smokers and Non-Smokers')
-plt.show()
-
-plt.figure(figsize=(8, 6))
-sns.pointplot(x='smoker', y='tip', data=df, ci=None)
-plt.title('Tip Amount for Smokers and Non-Smokers (Pointplot)')
-plt.show()
+sns.boxplot(x=df['smoker'],y=df['tip'],hue=df['smoker'])
+plt.title("Average Tip Amount given by Smokers and Non-smokers")
 ```
 # Output :
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/844fe5fa-07f4-438e-850d-528ef4cb9503)
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/17e0b136-339f-4c1f-a624-13f067e98aae)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/0821f152-fa0a-4297-a93d-a1406fec8d20)
+
 
 # 3) How does the tip percentage vary based on the size of the dining party?
 ```python
 # 3) How does the tip percentage vary based on the size of the dining party?
-# Calculate tip percentage
-df['tip_percentage'] = (df['tip'] / df['total_bill']) * 100
-
-# Plot tip percentage based on the size of the dining party
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x='size', y='tip_percentage', data=df)
-plt.title('Tip Percentage by Dining Party Size')
-plt.show()
-
-plt.figure(figsize=(10, 6))
-sns.barplot(x='size', y='tip_percentage', data=df, ci=None)
-plt.title('Tip Percentage by Dining Party Size (Barplot)')
-plt.show()
+df["tip_percent"]=df["tip"]/df["total_bill"]
+sns.scatterplot(x=df['size'],y=df['tip_percent'],data=df)
+plt.title("Tip Percentage by Dining Party size")
 ```
 # Output:
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/0972ef1f-d0ce-412e-8bc9-4865c101b062)
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/c4e8dfa8-1c9c-4a16-af8c-061e7fe18a47)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/f3a9f0eb-18bc-4233-8481-ca53d5d09650)
+
 
 # 4) Which gender tends to leave higher tips?
 ```python
 # 4) Which gender tends to leave higher tips?
-plt.figure(figsize=(8, 6))
-sns.boxplot(x='sex', y='tip', data=df)
-plt.title('Tip Amount by Gender (Boxplot)')
-plt.show()
-
-plt.figure(figsize=(8, 6))
-sns.barplot(x='sex', y='tip', data=df, estimator='mean', ci=None)
-plt.title('Average Tip Amount by Gender')
-plt.show()
+sns.boxplot(x=df['sex'],y=df['tip'],hue=df['sex'])
+plt.title("Tips BAsed on gender")
 ```
 # Output:
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/e9ebf430-bb46-41dc-adcd-bd6f3f300121)
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/6e44e3ce-8211-46ca-bbe8-0d5980852244)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/ead63fc3-2030-4ec4-9743-0ab356f4ecb2)
+
 
 # 5) Is there any relationship between the total bill amount and the day of the week?
 ```python
-# 5) Is there any relationship between the total bill amount and the day of the week?
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='day', y='total_bill', data=df)
-plt.title('Total Bill Amount by Day of the Week')
-plt.show()
+sns.scatterplot(x=df['day'],y=df['total_bill'],hue=df['day'])
+plt.legend(loc="best")
+plt.title("Total bill amount by day of the week")
 ```
 # Output:
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/6338967c-c304-4112-a376-c6b4cee6c567)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/e5bfc270-d2f8-43e6-a764-386fc50e1b6a)
+
 
 # 6) How does the distribution of total bill amounts vary across different time periods (lunch vs. dineer)?
 ```python
-# 6) How does the distribution of total bill amounts vary across different time periods (lunch vs. dinner)?
-plt.figure(figsize=(8, 6))
-sns.boxplot(x='time', y='total_bill', data=df)
-plt.title('Total Bill Distribution for Lunch and Dinner')
+sns.histplot(data=df,x="total_bill",hue="time",element="step",stat="density")
+plt.title("Distribution of Total Bill Amounts by Time of Day")
 plt.show()
 ```
 # Output:
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/52c3def4-6861-42af-a464-2f8eb8dea127)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/277ee427-31bc-4258-9a67-faec36f16df8)
+
 
 
 # 7) Which dining party size group tends to have the highest average total bill amount?
 ```python
 # 7) Which dining party size group tends to have the highest average total bill amount?
-plt.figure(figsize=(10, 6))
-sns.barplot(x='size', y='total_bill', data=df, estimator='mean', ci=None)
-plt.title('Average Total Bill Amount by Dining Party Size')
-plt.show()
-
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='size', y='total_bill', data=df)
-plt.title('Average Total Bill Amount by Dining Party Size (Boxplot)')
+sns.barplot(x=df['size'],y=df['total_bill'],hue=df['size'])
+plt.title("Average total Bill amount by Dininng party size]")
 plt.show()
 ```
 # Output:
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/7fced2a2-f3ff-4751-8440-003d74938bc2)
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/11ed15a9-6595-477b-9a78-905363a76e5a)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/6aa03d3f-99e0-4eb9-992d-b77176be10e0)
+
 
 # 8) What is the distribution of tip amounts for each day of the week?
 ```python
 # 8) What is the distribution of tip amounts for each day of the week?
-plt.figure(figsize=(12, 6))
-sns.boxplot(x='day', y='tip', data=df)
-plt.title('Tip Amount Distribution by Day of the Week')
+sns.boxplot(x="day",y='tip',data=df)
+plt.title("Tip amount by dy of Week")
 plt.show()
 ```
 # Output:
 
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/86f17cc8-06ed-4ea1-b5cf-27db40bf204e)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/0d1e6047-dca8-4173-8ae2-e366199a3e95)
+
 
 # 9) How does the amount vary based on the type of service (lunch vs. dinner)?
 ```python
 # 9) How does the tip amount vary based on the type of service (lunch vs. dinner)?
-plt.figure(figsize=(8, 6))
-sns.boxplot(x='time', y='tip', data=df)
-plt.title('Tip Amount Variation for Lunch and Dinner')
-plt.show()
-
-plt.figure(figsize=(8, 6))
-sns.pointplot(x='time', y='tip', data=df, ci=None)
-plt.title('Tip Amount Variation for Lunch and Dinner (Pointplot)')
+sns.violinplot(x="time",y="tip",data=df)
+plt.title("Tip Amount time Of day")
 plt.show()
 ```
 # Output:
 
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/aae1aaf1-9268-4758-9aca-5c1ddecbe2c9)
-
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/c48c6d4b-1a9c-441a-a145-a3bb3e27927b)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/446d4ea9-0ac2-4039-8283-23f3a9848971)
 
 # 10) Is there any correlation between the total amount and amount and the tip amount ?
 ```python
 # 10) Is there any correlation between the total bill amount and the tip amount?
-plt.figure(figsize=(8, 6))
-sns.scatterplot(x='total_bill', y='tip', data=df)
-plt.title('Correlation Between Total Bill Amount and Tip Amount')
-plt.show()
-
-sns.pairplot(df, vars=['total_bill', 'tip'])
-plt.suptitle('Correlation Between Total Bill Amount and Tip Amount (Pair Plot)')
+sns.scatterplot(x="total_bill",y="tip",data=df)
+plt.title("Correaltion between Tip Amount and Total Bill Amount")
 plt.show()
 ```
 # Output:
 
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/45154c27-a62c-4541-b631-c64d7deac4b3)
+![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/654c0250-25a1-470e-9ab5-c98c505ddc24)
 
-![image](https://github.com/sabithapaulraj/ODD2023-Datascience-Ex-09/assets/118343379/8c8d437d-3ee9-4bc2-96f3-a3df1700fb67)
 
 # RESULT:
 Thus, Data Visualization on a complex dataset has been performed successfully and the data is saved to a file.
